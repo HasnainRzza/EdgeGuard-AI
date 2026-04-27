@@ -1,0 +1,17 @@
+artifacts_dir: "artifacts"
+dataset_path: "fire_dataset"
+
+training:
+  img_size: 128
+  alpha: 0.5
+  classes: ["fire", "no_fire"]
+  epochs: 15
+  batch_size: 16
+  learning_rate: 0.001
+
+mlflow:
+  experiment_name: "EdgeGuard-AI-Training"
+  tracking_uri: "http://localhost:5000"
+
+monitoring:
+  pushgateway_url: "localhost:9091"

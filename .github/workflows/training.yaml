@@ -1,0 +1,28 @@
+name: Model Training
+
+on:
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run Pipeline
+      run: |
+        # Note: This requires the dataset to be present or a mock dataset
+        # For CI, you might use a DVC-pulled dataset or a small sample
+        python src/pipeline.py
+    - name: Upload TFLite Model
+      uses: actions/upload-artifact@v3
+      with:
+        name: fire_model_int8
+        path: models/fire_model_int8.tflite

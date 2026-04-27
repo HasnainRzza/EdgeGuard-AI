@@ -1,0 +1,9 @@
+tensorflow>=2.10
+numpy
+opencv-python
+scikit-learn
+tqdm
+PyYAML
+mlflow
+prometheus_client
+psutil
