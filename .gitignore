@@ -216,3 +216,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Ignore all images inside dataset
+fire_dataset/fire_images/*
+fire_dataset/non_fire_images/*
+
+# BUT keep folder structure
+!fire_dataset/fire_images/.gitkeep
+!fire_dataset/non_fire_images/.gitkeep
