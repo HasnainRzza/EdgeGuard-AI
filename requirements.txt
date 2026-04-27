@@ -7,3 +7,6 @@ PyYAML
 mlflow
 prometheus_client
 psutil
+fastapi
+uvicorn[standard]
+python-multipart

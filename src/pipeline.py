@@ -26,9 +26,9 @@ def run_pipeline():
 
     # 3. Transformation
     print("🛠 Transforming data...")
-    X_train = transform_data(X_train_paths)
-    X_val = transform_data(X_val_paths)
-    X_test = transform_data(X_test_paths)
+    X_train, y_train = transform_data(X_train_paths, y_train)
+    X_val, y_val = transform_data(X_val_paths, y_val)
+    X_test, y_test = transform_data(X_test_paths, y_test)
     
     # 4. Build Model
     print("🧠 Building model...")

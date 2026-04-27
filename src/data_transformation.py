@@ -17,16 +17,28 @@ def preprocess_image(img_path):
     img = img / 255.0
     return img.astype(np.float32)
 
-def transform_data(image_paths):
-    """Processes a list of image paths into a numpy array of images."""
+def transform_data(image_paths, labels=None):
+    """Processes a list of image paths into a numpy array of images.
+    If labels are provided, filters the labels to match the successfully loaded images.
+    """
     X = []
-    for path in image_paths:
+    y_filtered = []
+    for i, path in enumerate(image_paths):
         try:
-            X.append(preprocess_image(path))
+            img = preprocess_image(path)
+            X.append(img)
+            if labels is not None:
+                y_filtered.append(labels[i])
         except Exception as e:
             print(f"Skipping {path}: {e}")
             continue
-    return np.array(X)
+            
+    X = np.array(X)
+    if labels is not None:
+        y_filtered = np.array(y_filtered)
+        assert len(X) == len(y_filtered), f"Data cardinality mismatch: X has {len(X)}, y has {len(y_filtered)}"
+        return X, y_filtered
+    return X
 
 def get_augmentation():
     return tf.keras.Sequential([

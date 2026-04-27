@@ -54,7 +54,7 @@ def train_model(model, X_train, y_train, X_val, y_val):
         # Save model
         model_dir = os.path.join(get_project_root(), "models")
         os.makedirs(model_dir, exist_ok=True)
-        model_path = os.path.join(model_dir, "fire_model.h5")
+        model_path = os.path.join(model_dir, "fire_model.keras")
         model.save(model_path)
         
         # Log model to MLflow
