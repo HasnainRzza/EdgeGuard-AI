@@ -1,1 +1,1 @@
-## ADD YOUR FIRE IMAGES HERE
+## ADD YOUR FIRE IMAGES IN fire_images folder
